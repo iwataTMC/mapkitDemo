@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-import SwiftUI
 
 
 struct Address {
@@ -17,8 +16,11 @@ struct Address {
     var address: String
 }
 
+
 var addresses = [
-    Address(name: "JOYSOUND 名駅三丁目店", address: "愛知県名古屋市中村区名駅3丁目14−6"),Address(name: "JOYSOUND 名駅二丁目店", address: "愛知県名古屋市中村区名駅2丁目45−11"),Address(name: "ビッグエコー名駅4丁目店", address: "愛知県名古屋市中村区名駅4丁目5−18")
+    Address(name: "JOYSOUND 名駅三丁目店", address: "愛知県名古屋市中村区名駅3丁目14−6"),
+    Address(name: "ジャンカラ 名駅東口店", address: "愛知県名古屋市中村区名駅4丁目10−20"),
+    Address(name: "ビッグエコー名駅4丁目店", address: "愛知県名古屋市中村区名駅4丁目5−18")
     
 ]
 
