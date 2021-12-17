@@ -107,9 +107,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             // 市区町村
 //            print(placemark.locality!)
             // これで日本語の住所はいい感じにでる
-            print(placemark.administrativeArea! + placemark.locality! + placemark.name!)
+            
+            let a = placemark.administrativeArea! + placemark.locality! + placemark.name!
+            
+            print(a)
+//            print(placemark.administrativeArea! + placemark.locality! + placemark.name!)
         }
-        print((view.annotation?.title ?? "no title")! as String)
+        let b = (view.annotation?.title ?? "no title")! as String
+        
+        print(b)
+//        print((view.annotation?.title ?? "no title")! as String)
     }
     
 }
