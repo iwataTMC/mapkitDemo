@@ -25,7 +25,7 @@ var addresses = [
 ]
 
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -64,6 +64,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         mapView.region = region
         
         addPin()
+        
+        mapView.delegate = self
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -85,5 +87,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             break
         }
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let lc2d:CLLocationCoordinate2D = view.annotation?.coordinate as Any as! CLLocationCoordinate2D
+        let l:CLLocation = CLLocation(latitude: lc2d.latitude, longitude: lc2d.longitude)
+//        print(l)
+        
+        let location:CLLocation = l
+        
+        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+            guard let placemark = placemarks?.first, error == nil else { return }
+            // 市区町村より下の階層が出力
+//            print(placemark.name!)
+            // 都道府県
+//            print(placemark.administrativeArea!)
+            // なんとか郡とかがあれば(ない場合もあるのでnull回避)
+//            print(placemark.subAdministrativeArea ?? "")
+            // 市区町村
+//            print(placemark.locality!)
+            // これで日本語の住所はいい感じにでる
+            print(placemark.administrativeArea! + placemark.locality! + placemark.name!)
+        }
+        
+    }
+    
 }
-
